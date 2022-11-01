@@ -1,10 +1,10 @@
 $high-emph: rgba(black, 0.87);
 $med-emph: rgba(black, 0.69); //Noicee
 $low-emph: rgba(black, 0.38);
-$pastel-coral: linear-gradient(45deg, blue, white); 
+$pastel-coral: #FFA38C; 
 
-$overlay: mix($pastel-coral, blue, 95%);
-$overlay-light: mix($pastel-coral, blue, 86%);
+$overlay: mix($pastel-coral, white, 95%);
+$overlay-light: mix($pastel-coral, white, 86%);
 
 html, body, input, textarea, select, button {   
   color: $high-emph !important;
