@@ -22,15 +22,29 @@ img.emoji{
 }
 
 .page-content {
+  background-image: url(https://static.vecteezy.com/system/resources/previews/005/993/672/non_2x/hand-painted-watercolour-background-free-vector.jpg);
+  -webkit-font-smoothing: antialiased !important;
+        text-rendering: optimizeLegibility !important;
+        margin: 0;
+        height: 100%;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        background-position:100% 100%;
+        min-height:100%;
+        min-width:100%;
+        background-size:cover;
+        margin: 0;
+        height: 100%;
         -webkit-font-smoothing: antialiased !important;
         text-rendering: optimizeLegibility !important;
         font-family: "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
-}
+      color: #cf614d;
+      }
 
 // make non-headings slightly lighter
 .post-content p, .post-content li {
    font-size: 20px;
-   color: #515151;
+   color: #7ec7bc;
 }
 
 .post-link{
