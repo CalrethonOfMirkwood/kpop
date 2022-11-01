@@ -18,19 +18,33 @@ img.emoji{
   text-align: center;
   font-size: .8rem;
   font-style: italic;
-  color: light-grey;
+  color: #7ec7bc;
 }
 
 .page-content {
+  background-image: url(https://wallpaperaccess.com/full/2039809.jpg);
+  -webkit-font-smoothing: antialiased !important;
+        text-rendering: optimizeLegibility !important;
+        margin: 0;
+        height: 100%;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        background-position:100% 100%;
+        min-height:100%;
+        min-width:100%;
+        background-size:cover;
+        margin: 0;
+        height: 100%;
         -webkit-font-smoothing: antialiased !important;
         text-rendering: optimizeLegibility !important;
         font-family: "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important;
-}
+      color: #cf614d;
+      }
 
 // make non-headings slightly lighter
 .post-content p, .post-content li {
    font-size: 20px;
-   color: #515151;
+   color: #7ec7bc;
 }
 
 .post-link{
@@ -120,7 +134,7 @@ details.description:not([open]) summary::after {
 .anchor-link {
   opacity: 0;
   padding-left: 0.375em;
-  \-webkit-text-stroke: 1.75px white;
+  \-webkit-text-stroke: 1.75px #7ec7bc;
   \-webkit-transition: opacity 0.2s ease-in-out 0.1s;
   \-moz-transition: opacity 0.2s ease-in-out 0.1s;
   \-ms-transition: opacity 0.2s ease-in-out 0.1s;
@@ -175,7 +189,7 @@ h6:hover .anchor-link {
   font-size: 16px;
   color: #d9230f;
 }
-.search-result-rel-url {color: silver;}
+.search-result-rel-url {color: rgb(135, 148, 202);}
 .search-results-list-item a {display: block; color: #777;}
 .search-results-list-item a:hover, .search-results-list-item a:focus {text-decoration: none;}
 .search-results-list-item a:hover .search-result-title {text-decoration: underline;}
