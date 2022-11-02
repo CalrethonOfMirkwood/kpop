@@ -1,44 +1,17 @@
-version: "3"
+version: ‘3’
 services:
-  fastpages: &fastpages
-    working_dir: /data
-    environment:
-        - INPUT_BOOL_SAVE_MARKDOWN=false
-    build:
-      context: ./_action_files
-      dockerfile: ./Dockerfile
-    image: fastpages-dev
-    logging:
-      driver: json-file
-      options:
-        max-size: 50m
-    stdin_open: true
-    tty: true
-    volumes:
-      - .:/data/
-
-  converter:
-    <<: *fastpages
-    command: /fastpages/action_entrypoint.sh
-
-  notebook:
-    <<: *fastpages
-    command: jupyter notebook --allow-root --no-browser --ip=0.0.0.0 --port=8080 --NotebookApp.token='' --NotebookApp.password=''
+  web:
+    image: java_csav2
+    build: .
     ports:
-      - "8080:8082"
-
-  watcher:
-    <<: *fastpages
-    command: watchmedo shell-command --command /fastpages/action_entrypoint.sh --pattern *.ipynb --recursive --drop
-    network_mode: host # for GitHub Codespaces https://github.com/features/codespaces/
-
-  jekyll:
-    working_dir: /data
-    image: fastai/fastpages-jekyll
+      - “8081:8078”
+    volumes:
+      - persistent_volume:/app/volumes
     restart: unless-stopped
-    ports:
-      - "7000:7000"
-    volumes:
-      - .:/data/
-    command: >
-      bash -c "chmod -R u+rw . && jekyll serve --host 0.0.0.0 --trace --strict_front_matter"
+volumes:
+  persistent_volume:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/ubuntu/nighthawk_csa/volumes
