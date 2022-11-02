@@ -327,9 +327,9 @@ img.emoji { display: inline !important; vertical-align: baseline !important; }
 
 .post figcaption { text-align: center; font-size: .8rem; font-style: italic; color: #7ec7bc; }
 
-.page-content { background-image: url(https://images.unsplash.com/photo-1517154421773-0529f29ea451?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8c2VvdWx8ZW58MHx8MHx8&w=1000&q=80); -webkit-font-smoothing: antialiased !important; text-rendering: optimizeLegibility !important; margin: 0; height: 100%; background-repeat: no-repeat; background-attachment: fixed; background-position: 100% 100%; min-height: 100%; min-width: 100%; background-size: cover; margin: 0; height: 100%; -webkit-font-smoothing: antialiased !important; text-rendering: optimizeLegibility !important; font-family: "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important; color: #cf614d; }
+.page-content { background-image: url(https://images.unsplash.com/photo-1554310603-d39d43033735?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80); -webkit-font-smoothing: antialiased !important; text-rendering: optimizeLegibility !important; margin: 0; height: 100%; background-repeat: no-repeat; background-attachment: fixed; background-position: 100% 100%; min-height: 100%; min-width: 100%; background-size: cover; margin: 0; height: 100%; -webkit-font-smoothing: antialiased !important; text-rendering: optimizeLegibility !important; font-family: "Segoe UI", SegoeUI, Roboto, "Segoe WP", "Helvetica Neue", "Helvetica", "Tahoma", "Arial", sans-serif !important; color: black; }
 
-.post-content p, .post-content li { font-size: 20px; color: #7ec7bc; }
+.post-content p, .post-content li { font-size: 20px; color: #7ec7bc; background-color: #ffffff7c; }
 
 .post-link { font-weight: normal; }
 
