@@ -16,9 +16,20 @@
   
 
   
+      ,"page2": {
+          "title": "Daily",
+          "content": "Daily Kpop Song . Update . .",
+          "url": "https://calrethonofmirkwood.github.io/kpop/daily",
+          "relUrl": "/daily",
+          "date": ""
+      }
+      
+  
 
   
-      ,"page3": {
+
+  
+      ,"page4": {
           "title": "Kpop Compatibility Quiz",
           "content": "Take this amazing personality quiz to determine which kpop idol you are most compatible with. . . . &lt;/div&gt; .",
           "url": "https://calrethonofmirkwood.github.io/kpop/quiz/",
@@ -29,7 +40,7 @@
   
 
   
-      ,"page4": {
+      ,"page5": {
           "title": "Random",
           "content": "Random Song Generator . Refresh Page .",
           "url": "https://calrethonofmirkwood.github.io/kpop/random",
@@ -48,7 +59,7 @@
   
 
   
-      ,"page8": {
+      ,"page9": {
           "title": "All songs",
           "content": "",
           "url": "https://calrethonofmirkwood.github.io/kpop/songlist",
@@ -70,7 +81,7 @@
   
 
   
-      ,"page13": {
+      ,"page14": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://calrethonofmirkwood.github.io/kpop/robots.txt",

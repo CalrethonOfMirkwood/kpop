@@ -4,20 +4,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Random | K-Pop</title>
+<title>Daily | K-Pop</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Random" />
+<meta property="og:title" content="Daily" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Fan page for all Kpop lovers" />
 <meta property="og:description" content="Fan page for all Kpop lovers" />
-<link rel="canonical" href="https://calrethonofmirkwood.github.io/kpop/random" />
-<meta property="og:url" content="https://calrethonofmirkwood.github.io/kpop/random" />
+<link rel="canonical" href="https://calrethonofmirkwood.github.io/kpop/daily" />
+<meta property="og:url" content="https://calrethonofmirkwood.github.io/kpop/daily" />
 <meta property="og:site_name" content="K-Pop" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Random" />
+<meta property="twitter:title" content="Daily" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Fan page for all Kpop lovers","headline":"Random","url":"https://calrethonofmirkwood.github.io/kpop/random"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Fan page for all Kpop lovers","headline":"Daily","url":"https://calrethonofmirkwood.github.io/kpop/daily"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/kpop/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://calrethonofmirkwood.github.io/kpop/feed.xml" title="K-Pop" /><link rel="shortcut icon" type="image/x-icon" href="/kpop/images/favicon.ico"><!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" /> -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /> -->
@@ -91,40 +91,47 @@ window.onload = wrap_img;
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <!-- 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
- -->
+        <h2> Daily Kpop Song </h2>
 
-<!-- <table>
-    <thead>
-        <tr>
-            <th>Song</th>
-            <th>Like</th>
-            <th>Dislike</th>
-        </tr>
-    </thead>
-    <tbody id="result"></tbody>
-</table> -->
-
-<h2> Random Song Generator</h2>
-
-<button class="btn" onClick="window.location.reload();">Refresh Page</button>
+<button class="btn" onClick="getRemain()">Update</button>
+<h3 id="remain"></h3>
 
 <div id="result" class="row"></div>
 
-<!-- <div class="card" style="width: 18rem; margin: 3 rem;">
-    <div class="card-body">
-        <iframe style="border-radius:12px; padding: 1 rem" src="https://open.spotify.com/embed/track/0RqzUS7AkBhQDrBxcGFeDv?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      <a href="#" class="btn btn-success">Like</a>
-      <a href="#" class="btn btn-danger">Dislike</a>
-    </div>
-  </div> -->
 
 <script>
-    
 
-  // prepare HTML defined "result" container for new output
+    function getRemain() {
+        var date = new Date();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+
+        var leftHour = 23 - hour;
+        var leftMinute = 59 - minute;
+        var mPlural = "minutes";
+        var hPlural = "hours";
+
+        if (leftMinute == 1) {
+            mPlural = "minute"
+        }
+        else {
+            mPlural = "minutes"
+        }
+
+        if (leftHour == 1) {
+            hPlural = "hour"
+        }
+        else {
+            hPlural = "hours"
+        }
+
+        document.getElementById("remain").innerHTML = "The daily song will refresh in " + leftHour + " " + hPlural + " and " + leftMinute + " " + mPlural +"."
+    }
+
+
+
+
+      // prepare HTML defined "result" container for new output
   const resultContainer = document.getElementById("result");
 
 // keys for song reactions
@@ -133,7 +140,7 @@ const BOOHOO = "boohoo";
 
 // prepare fetch urls
 const url = "https://didactic.nighthawkcoders.tk/api/songs";
-const get_url = url +"/random";
+const get_url = url +"/daily";
 const like_url = url + "/like/";  // haha reaction
 const jeer_url = url + "/jeer/";  // boohoo reaction
 
@@ -247,9 +254,8 @@ function error(err) {
   resultContainer.appendChild(tr);
 }
 
+
 </script>
-
-
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/kpop/"></data>
