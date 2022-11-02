@@ -40,6 +40,17 @@
   
 
   
+      ,"page4": {
+          "title": "Random",
+          "content": "Random Song Generator . Refresh Page .",
+          "url": "https://calrethonofmirkwood.github.io/kpop/random",
+          "relUrl": "/random",
+          "date": ""
+      }
+      
+  
+
+  
   
 
   
@@ -48,7 +59,7 @@
   
 
   
-      ,"page7": {
+      ,"page8": {
           "title": "All songs",
           "content": "",
           "url": "https://calrethonofmirkwood.github.io/kpop/songlist",
@@ -70,7 +81,7 @@
   
 
   
-      ,"page12": {
+      ,"page13": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://calrethonofmirkwood.github.io/kpop/robots.txt",

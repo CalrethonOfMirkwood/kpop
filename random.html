@@ -4,20 +4,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>All songs | 케이팝</title>
+<title>Random | 케이팝</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="All songs" />
+<meta property="og:title" content="Random" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Fan page for all Kpop lovers" />
 <meta property="og:description" content="Fan page for all Kpop lovers" />
-<link rel="canonical" href="https://calrethonofmirkwood.github.io/kpop/songlist" />
-<meta property="og:url" content="https://calrethonofmirkwood.github.io/kpop/songlist" />
+<link rel="canonical" href="https://calrethonofmirkwood.github.io/kpop/random" />
+<meta property="og:url" content="https://calrethonofmirkwood.github.io/kpop/random" />
 <meta property="og:site_name" content="케이팝" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="All songs" />
+<meta property="twitter:title" content="Random" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Fan page for all Kpop lovers","headline":"All songs","url":"https://calrethonofmirkwood.github.io/kpop/songlist"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Fan page for all Kpop lovers","headline":"Random","url":"https://calrethonofmirkwood.github.io/kpop/random"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/kpop/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://calrethonofmirkwood.github.io/kpop/feed.xml" title="케이팝" /><link rel="shortcut icon" type="image/x-icon" href="/kpop/images/favicon.ico"><!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" /> -->
 <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /> -->
@@ -107,6 +107,10 @@ window.onload = wrap_img;
     <tbody id="result"></tbody>
 </table> -->
 
+<h2> Random Song Generator</h2>
+
+<button class="btn" onClick="window.location.reload();">Refresh Page</button>
+
 <div id="result" class="row"></div>
 
 <!-- <div class="card" style="width: 18rem; margin: 3 rem;">
@@ -129,7 +133,7 @@ const BOOHOO = "boohoo";
 
 // prepare fetch urls
 const url = "https://didactic.nighthawkcoders.tk/api/songs";
-const get_url = url +"/all";
+const get_url = url +"/random";
 const like_url = url + "/like/";  // haha reaction
 const jeer_url = url + "/jeer/";  // boohoo reaction
 
@@ -159,45 +163,40 @@ fetch(get_url, options)
     // valid response will have JSON data
     response.json().then(data => {
         console.log(data);
-        for (const row of data) {
           // make "card element" for each "row of data"
-          const card = document.createElement("div");
-          card.className = "card";
-          card.style = "width: 18rem; margin: 3rem; border-radius: 1rem; background-color: #FFFFFF"
           
           // td for song cell
-          const cardbody = document.createElement("div");
-            cardbody.className = "card-body";
-            cardbody.innerHTML = "<iframe style='border-radius:12px' src='" + row.song + "' width='100%' height='352' frameBorder='0' allowfullscreen='0' allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture' loading='lazy'></iframe>";  // add fetched data to innerHTML
+        resultContainer.innerHTML = "<iframe style='border-radius:12px' src='" + data.song + "' width='100%' height='352' frameBorder='0' allowfullscreen='0' allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture' loading='lazy'></iframe>";  // add fetched data to innerHTML
 
           // td for haha cell with onclick actions
           const haha_but = document.createElement("a");
-            haha_but.id = HAHA+row.id;
+            haha_but.id = HAHA+data.id;
             haha_but.className = "btn btn-success mx-1";   // establishes a HAHA JS id for cell
-            haha_but.innerHTML = "Like - [" + row.haha + "]";;  // add fetched "haha count" to innerHTML
+            haha_but.innerHTML = "Like - [" + data.haha + "]";;  // add fetched "haha count" to innerHTML
+            haha_but.style = "margin: 1 em";
             haha_but.onclick = function () {
               // onclick function call with "like parameters"
-              reaction(HAHA, like_url+row.id, haha_but.id);  
+              reaction(HAHA, like_url+data.id, haha_but.id);  
             };
 
           // td for boohoo cell with onclick actions
           const boohoo_but = document.createElement("a");
-            boohoo_but.id = BOOHOO+row.id;  // establishes a BOOHOO JS id for cell
-            boohoo_but.innerHTML = "Dislike - [" + row.boohoo + "]";
-            boohoo_but.className = "btn btn-danger mx-1";  // add fetched "boohoo count" to innerHTML
+            boohoo_but.id = BOOHOO+data.id;  // establishes a BOOHOO JS id for cell
+            boohoo_but.innerHTML = "Dislike - [" + data.boohoo + "]";
+            boohoo_but.className = "btn btn-danger";  // add fetched "boohoo count" to innerHTML
+            boohoo_but.style = "margin: 1 em";
             boohoo_but.onclick = function () {
               // onclick function call with "jeer parameters"
-              reaction(BOOHOO, jeer_url+row.id, boohoo_but.id);  
+              reaction(BOOHOO, jeer_url+data.id, boohoo_but.id);  
             };
            
           // this builds ALL td's (cells) into tr (row) element
-          card.appendChild(cardbody);
-          cardbody.appendChild(haha_but);
-          cardbody.appendChild(boohoo_but);
+          resultContainer.appendChild(haha_but);
+          resultContainer.appendChild(boohoo_but);
 
-          // this adds all the tr (row) work above to the HTML "result" container
-          resultContainer.appendChild(card);
-        }
+        //   this adds all the tr (row) work above to the HTML "result" container
+        //   resultContainer.appendChild(card);
+        
     })
 })
 // catch fetch errors (ie Nginx ACCESS to server blocked)
