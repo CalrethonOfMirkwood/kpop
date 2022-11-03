@@ -5,7 +5,7 @@
   
       "page0": {
           "title": "Daily",
-          "content": "Daily Kpop Song . Update .",
+          "content": "Daily K-Pop Song . Update .",
           "url": "https://calrethonofmirkwood.github.io/kpop/daily",
           "relUrl": "/daily",
           "date": ""
@@ -16,7 +16,7 @@
   
       ,"page1": {
           "title": "Random",
-          "content": "Random Song Generator . Refresh Page",
+          "content": "Random K-Pop Song Generator . Refresh Page",
           "url": "https://calrethonofmirkwood.github.io/kpop/random",
           "relUrl": "/random",
           "date": ""
