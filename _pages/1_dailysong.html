@@ -1,43 +1,64 @@
 ---
-permalink: /random
+permalink: /daily
 layout: default
-title: Random
+title: Daily
 ---
 
-<!-- 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
- -->
+<style>
+.btn {
+    background-color: navy !important;
+    color: white !important;
+    border-color: navy !important;
+    padding: 5px;
+    margin: 8px;
+}
 
-<!-- <table>
-    <thead>
-        <tr>
-            <th>Song</th>
-            <th>Like</th>
-            <th>Dislike</th>
-        </tr>
-    </thead>
-    <tbody id="result"></tbody>
-</table> -->
+.btn:hover {
+    background-color: blue !important;
+}
+</style>
 
-<h2> Random Song Generator</h2>
+<center><h1 style="color: white"> Daily K-Pop Song </h1></center>
 
-<button class="btn" onClick="window.location.reload();">Refresh Page</button>
+<center><button class="btn" onClick="getRemain()">Update</button></center>
+<center><h3 id="remain" style="color: white"></h3></center>
 
-<div id="result" class="row"></div>
+<center><div id="result" class="row"></div></center>
 
-<!-- <div class="card" style="width: 18rem; margin: 3 rem;">
-    <div class="card-body">
-        <iframe style="border-radius:12px; padding: 1 rem" src="https://open.spotify.com/embed/track/0RqzUS7AkBhQDrBxcGFeDv?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-      <a href="#" class="btn btn-success">Like</a>
-      <a href="#" class="btn btn-danger">Dislike</a>
-    </div>
-  </div> -->
 
 <script>
-    
 
-  // prepare HTML defined "result" container for new output
+    function getRemain() {
+        var date = new Date();
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+
+        var leftHour = 23 - hour;
+        var leftMinute = 59 - minute;
+        var mPlural = "minutes";
+        var hPlural = "hours";
+
+        if (leftMinute == 1) {
+            mPlural = "minute"
+        }
+        else {
+            mPlural = "minutes"
+        }
+
+        if (leftHour == 1) {
+            hPlural = "hour"
+        }
+        else {
+            hPlural = "hours"
+        }
+
+        document.getElementById("remain").innerHTML = "The daily song will refresh in " + leftHour + " " + hPlural + " and " + leftMinute + " " + mPlural +"."
+    }
+
+
+
+
+      // prepare HTML defined "result" container for new output
   const resultContainer = document.getElementById("result");
 
 // keys for song reactions
@@ -46,7 +67,7 @@ const BOOHOO = "boohoo";
 
 // prepare fetch urls
 const url = "https://didactic.nighthawkcoders.tk/api/songs";
-const get_url = url +"/random";
+const get_url = url +"/daily";
 const like_url = url + "/like/";  // haha reaction
 const jeer_url = url + "/jeer/";  // boohoo reaction
 
@@ -84,9 +105,8 @@ fetch(get_url, options)
           // td for haha cell with onclick actions
           const haha_but = document.createElement("a");
             haha_but.id = HAHA+data.id;
-            haha_but.className = "btn btn-success mx-1";   // establishes a HAHA JS id for cell
-            haha_but.innerHTML = "Like - [" + data.haha + "]";;  // add fetched "haha count" to innerHTML
-            haha_but.style = "margin: 1 em";
+            haha_but.className = "btn";   // establishes a HAHA JS id for cell
+            haha_but.innerHTML = "Like - [" + data.haha + "]";  // add fetched "haha count" to innerHTML
             haha_but.onclick = function () {
               // onclick function call with "like parameters"
               reaction(HAHA, like_url+data.id, haha_but.id);  
@@ -96,8 +116,7 @@ fetch(get_url, options)
           const boohoo_but = document.createElement("a");
             boohoo_but.id = BOOHOO+data.id;  // establishes a BOOHOO JS id for cell
             boohoo_but.innerHTML = "Dislike - [" + data.boohoo + "]";
-            boohoo_but.className = "btn btn-danger";  // add fetched "boohoo count" to innerHTML
-            boohoo_but.style = "margin: 1 em";
+            boohoo_but.className = "btn";  // add fetched "boohoo count" to innerHTML
             boohoo_but.onclick = function () {
               // onclick function call with "jeer parameters"
               reaction(BOOHOO, jeer_url+data.id, boohoo_but.id);  
@@ -160,5 +179,5 @@ function error(err) {
   resultContainer.appendChild(tr);
 }
 
-</script>
 
+</script>
