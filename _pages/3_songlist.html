@@ -1,7 +1,7 @@
 ---
-permalink: /random
+permalink: /songlist
 layout: default
-title: Random
+title: All songs
 ---
 
 <!-- 
@@ -20,11 +20,7 @@ title: Random
     <tbody id="result"></tbody>
 </table> -->
 
-<h2> Random Song Generator</h2>
-
-<button class="btn" onClick="window.location.reload();">Refresh Page</button>
-
-<div id="result" class="row"></div>
+<center><div id="result" class="row"></div></center>
 
 <!-- <div class="card" style="width: 18rem; margin: 3 rem;">
     <div class="card-body">
@@ -46,7 +42,7 @@ const BOOHOO = "boohoo";
 
 // prepare fetch urls
 const url = "https://didactic.nighthawkcoders.tk/api/songs";
-const get_url = url +"/random";
+const get_url = url +"/all";
 const like_url = url + "/like/";  // haha reaction
 const jeer_url = url + "/jeer/";  // boohoo reaction
 
@@ -76,43 +72,48 @@ fetch(get_url, options)
     // valid response will have JSON data
     response.json().then(data => {
         console.log(data);
+        for (const row of data) {
           // make "card element" for each "row of data"
+          const card = document.createElement("div");
+          card.className = "card";
+          card.style = "width: 18rem; margin: 3rem; border-radius: 1rem; background-color: #FFFFFF"
           
           // td for song cell
-        resultContainer.innerHTML = "<iframe style='border-radius:12px' src='" + data.song + "' width='100%' height='352' frameBorder='0' allowfullscreen='0' allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture' loading='lazy'></iframe>";  // add fetched data to innerHTML
+          const cardbody = document.createElement("div");
+            cardbody.className = "card-body";
+            cardbody.innerHTML = "<iframe style='border-radius:12px' src='" + row.song + "' width='100%' height='352' frameBorder='0' allowfullscreen='0' allow='autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture' loading='lazy'></iframe>";  // add fetched data to innerHTML
 
           // td for haha cell with onclick actions
           const haha_but = document.createElement("a");
-            haha_but.id = HAHA+data.id;
+            haha_but.id = HAHA+row.id;
             haha_but.className = "btn btn-success mx-1";   // establishes a HAHA JS id for cell
-            haha_but.innerHTML = "Like - [" + data.haha + "]";;  // add fetched "haha count" to innerHTML
-            haha_but.style = "margin: 1 em";
+            haha_but.innerHTML = "Like - [" + row.haha + "]";;  // add fetched "haha count" to innerHTML
             haha_but.onclick = function () {
               // onclick function call with "like parameters"
-              reaction(HAHA, like_url+data.id, haha_but.id);  
+              reaction(HAHA, like_url+row.id, haha_but.id);  
             };
 
           // td for boohoo cell with onclick actions
           const boohoo_but = document.createElement("a");
-            boohoo_but.id = BOOHOO+data.id;  // establishes a BOOHOO JS id for cell
-            boohoo_but.innerHTML = "Dislike - [" + data.boohoo + "]";
-            boohoo_but.className = "btn btn-danger";  // add fetched "boohoo count" to innerHTML
-            boohoo_but.style = "margin: 1 em";
+            boohoo_but.id = BOOHOO+row.id;  // establishes a BOOHOO JS id for cell
+            boohoo_but.innerHTML = "Dislike - [" + row.boohoo + "]";
+            boohoo_but.className = "btn btn-danger mx-1";  // add fetched "boohoo count" to innerHTML
             boohoo_but.onclick = function () {
               // onclick function call with "jeer parameters"
-              reaction(BOOHOO, jeer_url+data.id, boohoo_but.id);  
+              reaction(BOOHOO, jeer_url+row.id, boohoo_but.id);  
             };
            
           // this builds ALL td's (cells) into tr (row) element
-          resultContainer.appendChild(haha_but);
-          resultContainer.appendChild(boohoo_but);
+          card.appendChild(cardbody);
+          cardbody.appendChild(haha_but);
+          cardbody.appendChild(boohoo_but);
 
-        //   this adds all the tr (row) work above to the HTML "result" container
-        //   resultContainer.appendChild(card);
-        
+          // this adds all the tr (row) work above to the HTML "result" container
+          resultContainer.appendChild(card);
+        }
     })
 })
-// catch fetch errors (ie Nginx ACCESS to server blocked)
+// catch fetch errors (ie Nginx ACCESS to server blocked) COMMIT TEST
 .catch(err => {
   error(err + " " + get_url);
 });
