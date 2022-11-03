@@ -172,9 +172,14 @@ fetch(get_url, options)
           // td for haha cell with onclick actions
           const haha_but = document.createElement("a");
             haha_but.id = HAHA+data.id;
-            haha_but.className = "btn btn-success mx-1";   // establishes a HAHA JS id for cell
+            haha_but.className = "btn";   // establishes a HAHA JS id for cell
+            // Style
+            haha_but.style.backgroundColor = "#00008B";
+            haha_but.style.color = "#FFFFFF";
+            haha_but.style.padding = "5px";
+            haha_but.style.margin = "8px";
+            // Innerhtml content
             haha_but.innerHTML = "Like - [" + data.haha + "]";;  // add fetched "haha count" to innerHTML
-            haha_but.style = "margin: 1 em";
             haha_but.onclick = function () {
               // onclick function call with "like parameters"
               reaction(HAHA, like_url+data.id, haha_but.id);  
@@ -184,8 +189,13 @@ fetch(get_url, options)
           const boohoo_but = document.createElement("a");
             boohoo_but.id = BOOHOO+data.id;  // establishes a BOOHOO JS id for cell
             boohoo_but.innerHTML = "Dislike - [" + data.boohoo + "]";
-            boohoo_but.className = "btn btn-danger";  // add fetched "boohoo count" to innerHTML
-            boohoo_but.style = "margin: 1 em";
+            boohoo_but.className = "btn";  // add fetched "boohoo count" to innerHTML
+            // Style
+            boohoo_but.style.backgroundColor = "#00008B";
+            boohoo_but.style.color = "#FFFFFF";
+            boohoo_but.style.padding = "5px";
+            boohoo_but.style.margin = "8px";
+            // Innerhtml content
             boohoo_but.onclick = function () {
               // onclick function call with "jeer parameters"
               reaction(BOOHOO, jeer_url+data.id, boohoo_but.id);  
