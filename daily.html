@@ -91,7 +91,21 @@ window.onload = wrap_img;
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <center><h1 style="color: white"> Daily K-Pop Song </h1></center>
+        <style>
+.btn {
+    background-color: navy;
+    color: white;
+    border-color: navy;
+    padding: 5px;
+    margin: 8px;
+}
+
+.btn:hover {
+    background-color: blue;
+}
+</style>
+
+<center><h1 style="color: white"> Daily K-Pop Song </h1></center>
 
 <center><button class="btn" onClick="getRemain()">Update</button></center>
 <center><h3 id="remain" style="color: white"></h3></center>
